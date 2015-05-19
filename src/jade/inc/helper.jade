@@ -1,0 +1,70 @@
+//-------------------------------------//
+	#DOC DECLARATION
+//-------------------------------------//
+//- Document Declaration
+mixin helper-doc()
+	doctype
+	| 
+	|<!--[if lt IE 7]>      <html class="no-js ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+	|<!--[if IE 7]>         <html class="no-js ie lt-ie9 lt-ie8"> <![endif]-->
+	|<!--[if IE 8]>         <html class="no-js ie lt-ie9"> <![endif]-->
+	|<!--[if IE 9]>         <html class="no-js ie ie9"> <![endif]-->
+	| 
+
+	html(lang="en")
+		if block
+			block
+
+
+
+
+//-------------------------------------//
+	#HEAD MIXINS
+//-------------------------------------//
+//- Head Declaration
+//- Includes all the necessary 
+mixin helper-head()
+	head
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui")
+
+		if block
+			block
+
+
+//- CSS File Call
+mixin helper-css(css)
+	link(rel="stylesheet" type="text/css" href="#{css}")
+
+
+//- Typekit Script Call
+//- Only requires the unique ID for the kit.
+mixin helper-typekit(id)
+	script(type="text/javascript" src="//use.typekit.net/#{id}.js")
+	script(type="text/javascript").
+		try{Typekit.load();}catch(e){}
+
+
+mixin helper-typekit-advanced(id)
+	script.
+		(function(d) {var config = {kitId: '#{id}',scriptTimeout: 3000},h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)})(document);
+
+mixin helper-analytics(id)
+	script.
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', '#{id}', 'auto');
+		ga('send', 'pageview');
+
+
+//- FontAwesome
+//- Icon goodness.
+mixin helper-fontawesome()
+	link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet")
+
+
+
+

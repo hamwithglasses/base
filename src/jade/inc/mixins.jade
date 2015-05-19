@@ -1,0 +1,21 @@
+include helper.jade
+
+mixin html()
+	+helper-doc()
+		+helper-head()
+			meta(name="robots" content="noindex, nofollow")
+			title Northgate Smiles
+			+helper-css('css/main.css')
+			+helper-fontawesome()
+			link(rel="shortcut icon" href="img/favicon.png")
+			link(href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700|Open+Sans:600italic,600,700' rel='stylesheet' type='text/css')
+
+		body
+			block
+
+			//Scripts
+			script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+			script(src='js/main.js')
+
+
+

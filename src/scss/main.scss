@@ -1,0 +1,59 @@
+/*------------------------------------*\
+	#MODULES
+	Modules should not be touched unless you have a set of mixins or placeholder
+	selectors that should become standard.
+	Place all your custom mixins and selectors in /mixins
+\*------------------------------------*/
+
+@import 'modules/all';
+
+
+
+/*------------------------------------*\
+	#THIRD PARTY VENDORS
+	Add your vendor css files here. Remember to add .scss to the file so it
+	compiles cleanly.
+	The list below represents the default vendor files that are included.
+	Uncomment to include.
+\*------------------------------------*/
+
+//@import 'vendor/ceaser';
+//@import 'vendor/flickity';
+
+
+
+/*------------------------------------*\
+	#PROJECT SPECIFIC MIXINS
+	Add your project specific mixins here.
+	If you think the mixin you build should become a standard, please bring it
+	up and we can discuss adding it to modules.
+\*------------------------------------*/
+
+//@import 'mixins/.......
+
+
+
+/*------------------------------------*\
+	#GLOBAL
+	Global files are styles that dictate areas of a site that are repetitive.
+	ex: Navigation, footer, and hero image styles are examples of global styles.
+\*------------------------------------*/
+
+//Default Globals
+@import 'global/variables';
+@import 'global/base';
+@import 'global/wrapper';
+
+//Custom Globals
+
+
+
+/*------------------------------------*\
+	#PARTIALS
+	Partials encompass all the other block styles you'll have for your site.
+	Each block should have it's own file. If you get enough block elements for
+	a specific part of a site (ex: lots of home page specific partials), please
+	regroup these partials in a subfolder in partials.
+\*------------------------------------*/
+
+//@import 'partials/.......

@@ -1,0 +1,30 @@
+/*------------------------------------*\
+	#WRAPPER BLOCK MODEL
+	The wrapper class should be used for all primary sections on a web page.
+	The body modifier is used to encase the entirety of the site and set
+	a max-width to the site.
+	The full-width modifier is used for sections of a web page that span the
+	entire width of a web page.
+	The fixed-width modifier is used for sections of a web page that is
+	commonly the content width of the site. Any other (ie: smmaler) wrapper
+	seperations should be handled by as elements in other blocks.
+	ex:
+	.hero.wrapper.wrapper--fixed
+			.hero__column <-- A similar type of wrapper element.
+\*------------------------------------*/
+
+.wrapper {
+	position: relative; //mmmm I love positioning
+
+	&--body {
+
+	}
+
+	&--full-width {
+
+	}
+
+	&--fixed-width {
+
+	}
+}

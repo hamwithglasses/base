@@ -1,0 +1,15 @@
+/*------------------------------------*\
+	#VARIABLES
+	All global variables for your site should be included here.
+\*------------------------------------*/
+
+//Use path when linking to assets. This will give you control if assets are
+//end up in a different directory.
+//ex: background-image: url('{$path}img/bg.jpg');
+$path: '../';
+
+//Do not go under 16px
+$baseFontSize: 18px;
+
+//Sans-Serif - regular: 400, bold: 700
+$baseFont: sans-serif;

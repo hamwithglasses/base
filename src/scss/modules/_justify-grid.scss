@@ -1,0 +1,31 @@
+/*------------------------------------*\
+    #TEXT-ALIGN JUSTIFY GRID
+\*------------------------------------*/
+
+@mixin justify-grid() {
+    text-align: justify !important;
+    font-size: 0.1px !important;
+
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+    @mixin justify-grid__item() {
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+        width: 100%;
+
+        &--placeholder{
+            padding: 0 !important;
+            border: none !important;
+            margin: 0 !important;
+
+            &:after, &:before {
+                display: none !important;
+            }
+        }
+    }

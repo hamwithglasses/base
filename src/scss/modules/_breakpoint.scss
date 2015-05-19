@@ -1,0 +1,44 @@
+/*------------------------------------*\
+    #BASE BREAKPOINTS
+\*------------------------------------*/
+
+$bp-sml:  480px;
+$bp-med:  768px;
+$bp-lrg: 1350px;
+$bp-tv:  1920px;
+
+
+
+
+
+/*------------------------------------*\
+    #MEDIA QUERY WITH IE SUPPORT
+\*------------------------------------*/
+
+@mixin ie( $ie: 9 ) {
+    @if $ie == 9 {
+        .lt-ie9 & {
+            @content
+        }
+    }
+}
+
+
+
+
+
+/*------------------------------------*\
+    #MEDIA QUERY WITH IE SUPPORT
+\*------------------------------------*/
+
+@mixin bp( $min-width, $ie: false ) {
+    @media ( min-width: $min-width ) {
+        @content
+    }
+
+    @if $ie == true {
+        .lt-ie9 & {
+            @content
+        }
+    }
+}

@@ -1,0 +1,21 @@
+/*------------------------------------*\
+	#BASE HTML ELEMENTS
+	Global styles for html elements should remain in this partial.
+	Overarching styles to p tags, anchor tags, img, and do forth should all
+	be set here to avoid redundancy.
+\*------------------------------------*/
+
+html, body {
+	//Preset to eliminate any horizontal scrolling.
+	max-width: 100%;
+	overflow-y: hidden;
+}
+
+body {
+	//Base font styles, refer to _variables
+	font-family: $baseFont;
+	font-size: $baseFontSize;
+
+	color: black;
+	background-color: white;
+}
