@@ -1,19 +1,19 @@
 'use strict';
 
 //improved require()
+//I need a better local require setup
+//Also need a setup to break up tasks in this file
 var path = '';
 function r (module) {
 	return require( path + module);
 }
-
-
-
 
 // Include gulp
 var gulp = r('gulp');
 var runSequence = r('run-sequence');
 var del = r('del');
 
+//Important-ish stuff
 var concat = r('gulp-concat');
 var uglify = r('gulp-uglify');
 var rename = r('gulp-rename');
@@ -28,7 +28,7 @@ var todo = require('gulp-todo');
 //mmm image stuff
 var imagemin = r('gulp-imagemin');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
-var cache = r('gulp-cache');
+var cache = r('gulp-cache');//am I going to use this?
 
 //user facing conveniences
 var notify = r("gulp-notify");
@@ -48,6 +48,10 @@ var watch = r('gulp-watch');
 
 
 //js processing
+/*
+	Takes things from prepend first, then main, then finally append & concats.
+	Files with --ignore appended to them will not be included in concat.
+*/
 var scriptsSRC = [
 					'src/scripts/prepend/**/*.js',
 					'src/scripts/main.js',
@@ -78,6 +82,9 @@ gulp.task('scripts:build', function (cb) {
 
 
 //css processing
+/*
+	Pretty much lets sass do its thang. Import sass files from main.scss.
+*/
 var scssSRC = ['src/scss/**/*.scss']
 gulp.task('scss', function () {
 	gulp.src(scssSRC)
@@ -105,6 +112,10 @@ gulp.task('scss:build', function (cb) {
 
 
 //jade processing
+/*
+	Everything in include and template are ignored in compilation.
+	The page files you want compiled to HTML will just be in /jade.
+*/
 var jadeSRC = [
 				'src/jade/**/*.jade',
 				'!src/jade/inc/**/*.jade',
@@ -134,6 +145,11 @@ gulp.task('jade:build', function (cb) {
 
 
 //image compressing
+/*
+	Still working on this portion to handle file compression more closely to
+	Photoshop Generate (ex:file-name.jpg50 or something similar)
+*/
+
 gulp.task('jpg', function() {
 	gulp.src(['src/img/**/*.jpg', '!src/img/**/*--ignore.jpg'])
 		.pipe(imageminJpegRecompress({loops: 3})())
@@ -153,6 +169,9 @@ gulp.task('jpg:build', function (cb) {
 
 
 
+
+
+//file watch
 gulp.task('watch', function() {
 	// Watch scripts
 	gulp.watch('src/scripts/**/*', ['scripts:build', 'scripts:todo']);
@@ -165,7 +184,9 @@ gulp.task('watch', function() {
  });
 
 
-//gulp.task('default', ['build', 'images']);
+
+
+//default build
 gulp.task('default', function() {
 	runSequence(
 		['scripts:build', 'scss:build', 'jade:build', 'jpg:build'],
