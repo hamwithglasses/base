@@ -1,0 +1,13 @@
+%clearfix {
+	&:after {
+		display: block;
+		visibility: hidden;
+		clear: both;
+
+		height: 0;
+
+		font-size: 0;
+
+		content: ' ';
+	}
+}
