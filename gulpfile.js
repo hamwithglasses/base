@@ -152,7 +152,7 @@ gulp.task('jade:build', function (cb) {
 
 gulp.task('jpg', function() {
 	gulp.src(['src/img/**/*.jpg', '!src/img/**/*--ignore.jpg'])
-		.pipe(imageminJpegRecompress({loops: 3})())
+		.pipe(imageminJpegRecompress({loops: 3, quality: 'low'})())
 		.pipe(gulp.dest('build/img'))
 		.pipe(notify({ title:'JPG Squisher', message: 'Everything is squished.', onLast: true }));
 });
