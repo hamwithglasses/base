@@ -3,6 +3,9 @@
 	Modules should not be touched unless you have a set of mixins or placeholder
 	selectors that should become standard.
 	Place all your custom mixins and selectors in /mixins
+
+	Importing a module should result in no CSS ouput. These are just mixins
+	or placeholder selectors that can be used throughout a project.
 \*------------------------------------*/
 
 @import 'modules/all';
@@ -11,14 +14,16 @@
 
 /*------------------------------------*\
 	#THIRD PARTY VENDORS
-	Add your vendor css files here. Remember to add .scss to the file so it
-	compiles cleanly.
+	Add your vendor css files here. When adding vendor files to the folder, 
+	remember to add .scss to the file so it compiles nicely.
+	
 	The list below represents the default vendor files that are included.
 	Uncomment to include.
 \*------------------------------------*/
 
 //@import 'vendor/ceaser';
 //@import 'vendor/flickity';
+//@import 'vendor/magnific-popup';
 
 
 
