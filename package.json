@@ -12,6 +12,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.0.1",
     "gulp-strip-debug": "^1.0.2",
+    "gulp-tap": "^0.1.3",
     "gulp-todo": "^2.6.1",
     "gulp-watch": "^4.2.4",
     "imagemin-jpeg-recompress": "^4.2.1",

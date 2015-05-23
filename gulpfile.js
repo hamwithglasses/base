@@ -24,6 +24,7 @@ var jade = r('gulp-jade');
 var stripDebug = r('gulp-strip-debug');
 var beautify = r('gulp-jsbeautify');
 var todo = require('gulp-todo');
+var tap = require('gulp-tap');
 
 //mmm image stuff
 var imagemin = r('gulp-imagemin');
@@ -66,7 +67,6 @@ gulp.task('scripts', function() {
 			.pipe(rename({suffix: '.min'}))
 			.pipe(uglify())
 			.pipe(gulp.dest('deploy'))
-			.pipe(notify({ title: 'JS Concatenated', message: 'All looks good.', onLast: true }));
 });
 gulp.task('scripts:todo', function() {
 	gulp.src(scriptsSRC, { base: 'src/' })
@@ -96,7 +96,6 @@ gulp.task('scss', function () {
         .pipe(gulp.dest('build/css'))
 		.pipe(minifyCSS())
 		.pipe(gulp.dest('deploy'))
-		.pipe(notify({ title: 'CSS Compiled', message: 'Look at dat css.', onLast: true }));
 });
 gulp.task('scss:todo', function() {
 	gulp.src(scssSRC, { base: 'src/' })
@@ -116,6 +115,8 @@ gulp.task('scss:build', function (cb) {
 	Everything in include and template are ignored in compilation.
 	The page files you want compiled to HTML will just be in /jade.
 */
+
+
 var jadeSRC = [
 				'src/jade/**/*.jade',
 				'!src/jade/inc/**/*.jade',
@@ -123,11 +124,21 @@ var jadeSRC = [
 			];
 gulp.task('jade', function() {
 	gulp.src(jadeSRC)
-		.pipe(jade({
-			pretty: true
+		.pipe(tap(function(file, t) {
+			var cleanURL = file.relative;
+			cleanURL = cleanURL.trim().replace("__", "/").replace(".jade", "");
+
+			if(cleanURL == 'index') {
+				cleanURL = '';
+			}
+
+			return gulp.src(file.path)
+				.pipe(jade({
+					pretty: true
+				}))
+				.pipe(rename( 'index.html' ))
+				.pipe(gulp.dest( 'build/' + cleanURL ));
 		}))
-		.pipe(gulp.dest('build/html'))
-		.pipe(notify({ title: 'JADE Compiled', message: 'Pikachu, I choose you!', onLast: true }));
 });
 gulp.task('jade:todo', function() {
 	gulp.src('src/jade/**/*.jade', { base: 'src/' })
@@ -135,7 +146,7 @@ gulp.task('jade:todo', function() {
 			.pipe(gulp.dest('todo/'));
 });
 gulp.task('jade:clean', function(cb) {
-	del(['build/html/*'], cb);
+	del(['build/*.html'], cb);
 });
 gulp.task('jade:build', function (cb) {
 	runSequence('jade:clean', ['jade'], cb);
@@ -154,7 +165,6 @@ gulp.task('jpg', function() {
 	gulp.src(['src/img/**/*.jpg', '!src/img/**/*--ignore.jpg'])
 		.pipe(imageminJpegRecompress({loops: 3, quality: 'low'})())
 		.pipe(gulp.dest('build/img'))
-		.pipe(notify({ title:'JPG Squisher', message: 'Everything is squished.', onLast: true }));
 });
 gulp.task('jpg:ignore', function() {
 	gulp.src('src/img/**/*--ignore.jpg')

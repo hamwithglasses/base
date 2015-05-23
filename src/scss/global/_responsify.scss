@@ -1,0 +1,33 @@
+/*------------------------------------*\
+	#RESPONSIFY
+	These styles comprise of two selectors that will wrap all your images.
+	.responsify and &__wrap ensure that your images are responsive but also
+	take up the space that the image should to prevent redraws/load adjustments.
+\*------------------------------------*/
+
+.responsify {
+	display: block;
+	position: relative;
+	overflow: hidden;
+
+	width: 100%;
+
+	//The main responsify element will have a max-width & max-height set based
+	//on the images actual height and width.
+
+	&__wrap {
+		display: block;
+		//The wrap element is where you calcaulate the inline padding.
+		//ex: padding-top: imgH / imgW
+		//After the padding trick, add a preloader image.
+	}
+
+	img {
+		position: absolute !important;
+		top: 0 !important;
+		left: 0 !important;
+		width: 100% !important;
+		height: auto !important;
+		background-color: white !important;
+	}
+}
